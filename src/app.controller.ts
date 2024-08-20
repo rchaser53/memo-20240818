@@ -30,7 +30,8 @@ export class AppController {
   @UseInterceptors(FileInterceptor('file'))
   @Post('file/pass-validation')
   uploadFileAndPassValidation(
-    @Body() body: SampleDto,
+    // v10の場合、field名を指定してやる必要がある
+    @Body('body') body: SampleDto,
     @UploadedFile(
       new ParseFilePipeBuilder()
         // .addFileTypeValidator({
